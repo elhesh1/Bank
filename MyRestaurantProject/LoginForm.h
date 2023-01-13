@@ -44,6 +44,7 @@ namespace MyRestaurantProject {
 	private: System::Windows::Forms::TextBox^ tbPassword;
 	private: System::Windows::Forms::Button^ btnOK;
 	private: System::Windows::Forms::Button^ btnCancel;
+	private: System::Windows::Forms::LinkLabel^ llRegister;
 
 	private:
 		/// <summary>
@@ -65,6 +66,7 @@ namespace MyRestaurantProject {
 			this->tbPassword = (gcnew System::Windows::Forms::TextBox());
 			this->btnOK = (gcnew System::Windows::Forms::Button());
 			this->btnCancel = (gcnew System::Windows::Forms::Button());
+			this->llRegister = (gcnew System::Windows::Forms::LinkLabel());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -129,11 +131,23 @@ namespace MyRestaurantProject {
 			this->btnCancel->UseVisualStyleBackColor = true;
 			this->btnCancel->Click += gcnew System::EventHandler(this, &LoginForm::btnCancel_Click);
 			// 
+			// llRegister
+			// 
+			this->llRegister->AutoSize = true;
+			this->llRegister->Location = System::Drawing::Point(689, 259);
+			this->llRegister->Name = L"llRegister";
+			this->llRegister->Size = System::Drawing::Size(69, 20);
+			this->llRegister->TabIndex = 7;
+			this->llRegister->TabStop = true;
+			this->llRegister->Text = L"Register";
+			this->llRegister->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &LoginForm::llRegister_LinkClicked);
+			// 
 			// LoginForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1069, 470);
+			this->Controls->Add(this->llRegister);
 			this->Controls->Add(this->btnCancel);
 			this->Controls->Add(this->btnOK);
 			this->Controls->Add(this->tbPassword);
@@ -194,6 +208,11 @@ namespace MyRestaurantProject {
 			MessageBox::Show("Failed to connect to database",
 				"Database Connection Error", MessageBoxButtons::OK);
 		}
+	}
+	public: bool switchToRegister = false;
+	private: System::Void llRegister_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+		this->switchToRegister = true;
+		this->Close();
 	}
 };
 }
