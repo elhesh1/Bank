@@ -10,4 +10,5 @@ public:
 	String^ phone;
 	String^ address;
 	String^ password;
+	String^ balance;
 };

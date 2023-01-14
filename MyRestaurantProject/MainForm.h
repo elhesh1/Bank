@@ -25,7 +25,7 @@ namespace MyRestaurantProject {
 			//
 
 			lbUserInfo->Text = "ID=" + user->id + ", Name=" + user->name +
-				", email=" + user->email + ", address=" + user->address;
+				", email=" + user->email + ", address=" + user->address + ", balance=" + user->balance;
 		}
 
 	protected:
@@ -83,15 +83,18 @@ namespace MyRestaurantProject {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(719, 427);
+			this->ClientSize = System::Drawing::Size(1297, 427);
 			this->Controls->Add(this->lbUserInfo);
 			this->Controls->Add(this->label1);
 			this->Name = L"MainForm";
 			this->Text = L"MainForm";
+			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+	private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
 	};
 }

@@ -2,6 +2,7 @@
 #include "LoginForm.h"
 #include "MainForm.h"
 #include "RegisterForm.h"
+#include "Admin.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -15,6 +16,11 @@ void main(array<String^>^ args)
 	while (true) {
 		MyRestaurantProject::LoginForm loginForm;
 		loginForm.ShowDialog();
+
+		if (loginForm.switchToAdmin) {
+			MyRestaurantProject::Admin admin;
+			admin.ShowDialog();
+		}
 
 		if (loginForm.switchToRegister) {
 			//show the register form

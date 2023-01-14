@@ -1,5 +1,9 @@
 #pragma once
 #include "User.h"
+#include "Admin.h"
+#include <string.h>
+#include <iostream>
+#include <iostream>
 
 namespace MyRestaurantProject {
 
@@ -45,6 +49,7 @@ namespace MyRestaurantProject {
 	private: System::Windows::Forms::Button^ btnOK;
 	private: System::Windows::Forms::Button^ btnCancel;
 	private: System::Windows::Forms::LinkLabel^ llRegister;
+	private: System::Windows::Forms::Button^ btnAdmin;
 
 	private:
 		/// <summary>
@@ -67,6 +72,7 @@ namespace MyRestaurantProject {
 			this->btnOK = (gcnew System::Windows::Forms::Button());
 			this->btnCancel = (gcnew System::Windows::Forms::Button());
 			this->llRegister = (gcnew System::Windows::Forms::LinkLabel());
+			this->btnAdmin = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -142,11 +148,22 @@ namespace MyRestaurantProject {
 			this->llRegister->Text = L"Register";
 			this->llRegister->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &LoginForm::llRegister_LinkClicked);
 			// 
+			// btnAdmin
+			// 
+			this->btnAdmin->Location = System::Drawing::Point(852, 224);
+			this->btnAdmin->Name = L"btnAdmin";
+			this->btnAdmin->Size = System::Drawing::Size(75, 23);
+			this->btnAdmin->TabIndex = 8;
+			this->btnAdmin->Text = L"Admin";
+			this->btnAdmin->UseVisualStyleBackColor = true;
+			this->btnAdmin->Click += gcnew System::EventHandler(this, &LoginForm::btnAdmin_Click);
+			// 
 			// LoginForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1069, 470);
+			this->Controls->Add(this->btnAdmin);
 			this->Controls->Add(this->llRegister);
 			this->Controls->Add(this->btnCancel);
 			this->Controls->Add(this->btnOK);
@@ -157,6 +174,7 @@ namespace MyRestaurantProject {
 			this->Controls->Add(this->label1);
 			this->Name = L"LoginForm";
 			this->Text = L"Login Form";
+			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -166,16 +184,31 @@ namespace MyRestaurantProject {
 		this->Close();
 	}
 
+	public: bool switchToAdmin = false;
 	public: User^ user = nullptr;
 	private: System::Void btnOK_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ email = this->tbEmail->Text;
 		String^ password = this->tbPassword->Text;
+		
+		if (String::Compare(email, "admin") == 0) {
+			if (String::Compare(password, "admin") == 0) {
+				this->switchToAdmin = true;
+				this->Close();
+				return;
+			}
+			return;
+		} 
 
 		if (email->Length == 0 || password->Length == 0) {
 			MessageBox::Show("Please enter email and password",
 				"Email or Password Empty", MessageBoxButtons::OK);
+			
 			return;
 		}
+
+	//	if (strcmp(email, admin) == 0) {
+	//		switchToAdmin = true;
+	//	}
 
 		try {
 			String^ connString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=myrestaurant;Integrated Security=True";
@@ -196,6 +229,7 @@ namespace MyRestaurantProject {
 				user->phone = reader->GetString(3);
 				user->address = reader->GetString(4);
 				user->password = reader->GetString(5);
+				user->balance = reader->GetString(6);
 
 				this->Close();
 			}
@@ -212,6 +246,13 @@ namespace MyRestaurantProject {
 	public: bool switchToRegister = false;
 	private: System::Void llRegister_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 		this->switchToRegister = true;
+		this->Close();
+	}
+private: System::Void LoginForm_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+	
+	private: System::Void btnAdmin_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->switchToAdmin = true;
 		this->Close();
 	}
 };

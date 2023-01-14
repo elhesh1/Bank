@@ -284,6 +284,7 @@ namespace MyRestaurantProject {
 		String^ address = tbAddress->Text;
 		String^ password = tbPassword->Text;
 		String^ confirmPassword = tbConfirmPassword->Text;
+		String^ balance = "0";
 
 		if (name->Length == 0 || email->Length == 0
 			|| phone->Length == 0 || address->Length == 0
@@ -306,8 +307,8 @@ namespace MyRestaurantProject {
 			sqlConn.Open();
 
 			String^ sqlQuery = "INSERT INTO users " +
-				"(name, email, phone, address, password) VALUES " +
-				"(@name, @email, @phone, @address, @password);";
+				"(name, email, phone, address, password, balance) VALUES " +
+				"(@name, @email, @phone, @address, @password, @balance );";
 
 
 			SqlCommand command(sqlQuery, % sqlConn);
@@ -316,6 +317,7 @@ namespace MyRestaurantProject {
 			command.Parameters->AddWithValue("@phone", phone);
 			command.Parameters->AddWithValue("@address", address);
 			command.Parameters->AddWithValue("@password", password);
+			command.Parameters->AddWithValue("@balance", balance);
 
 			command.ExecuteNonQuery();
 			user = gcnew User;
@@ -324,6 +326,7 @@ namespace MyRestaurantProject {
 			user->phone = phone;
 			user->address = address;
 			user->password = password;
+			user->balance = balance;
 
 			this->Close();
 
