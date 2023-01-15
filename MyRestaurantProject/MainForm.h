@@ -53,8 +53,8 @@ namespace MyRestaurantProject {
 	private: System::Windows::Forms::Label^ lbUserInfo4;
 	private: System::Windows::Forms::Label^ lbUserInfo5;
 	private: System::Windows::Forms::Panel^ panel1;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button1;
+
+
 
 	private:
 		/// <summary>
@@ -77,8 +77,6 @@ namespace MyRestaurantProject {
 			this->lbUserInfo4 = (gcnew System::Windows::Forms::Label());
 			this->lbUserInfo5 = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -117,11 +115,11 @@ namespace MyRestaurantProject {
 			// lbUserInfo3
 			// 
 			this->lbUserInfo3->AutoSize = true;
-			this->lbUserInfo3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lbUserInfo3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbUserInfo3->Location = System::Drawing::Point(47, 218);
+			this->lbUserInfo3->Location = System::Drawing::Point(48, 319);
 			this->lbUserInfo3->Name = L"lbUserInfo3";
-			this->lbUserInfo3->Size = System::Drawing::Size(140, 32);
+			this->lbUserInfo3->Size = System::Drawing::Size(97, 25);
 			this->lbUserInfo3->TabIndex = 3;
 			this->lbUserInfo3->Text = L"label2222";
 			// 
@@ -130,7 +128,7 @@ namespace MyRestaurantProject {
 			this->lbUserInfo4->AutoSize = true;
 			this->lbUserInfo4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbUserInfo4->Location = System::Drawing::Point(47, 269);
+			this->lbUserInfo4->Location = System::Drawing::Point(47, 216);
 			this->lbUserInfo4->Name = L"lbUserInfo4";
 			this->lbUserInfo4->Size = System::Drawing::Size(140, 32);
 			this->lbUserInfo4->TabIndex = 4;
@@ -141,7 +139,7 @@ namespace MyRestaurantProject {
 			this->lbUserInfo5->AutoSize = true;
 			this->lbUserInfo5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbUserInfo5->Location = System::Drawing::Point(47, 326);
+			this->lbUserInfo5->Location = System::Drawing::Point(47, 270);
 			this->lbUserInfo5->Name = L"lbUserInfo5";
 			this->lbUserInfo5->Size = System::Drawing::Size(140, 32);
 			this->lbUserInfo5->TabIndex = 5;
@@ -149,8 +147,6 @@ namespace MyRestaurantProject {
 			// 
 			// panel1
 			// 
-			this->panel1->Controls->Add(this->button2);
-			this->panel1->Controls->Add(this->button1);
 			this->panel1->Controls->Add(this->label1);
 			this->panel1->Controls->Add(this->lbUserInfo5);
 			this->panel1->Controls->Add(this->lbUserInfo);
@@ -159,33 +155,15 @@ namespace MyRestaurantProject {
 			this->panel1->Controls->Add(this->lbUserInfo3);
 			this->panel1->Location = System::Drawing::Point(70, -17);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(385, 445);
+			this->panel1->Size = System::Drawing::Size(605, 445);
 			this->panel1->TabIndex = 6;
-			// 
-			// button2
-			// 
-			this->button2->Location = System::Drawing::Point(278, 312);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(72, 68);
-			this->button2->TabIndex = 7;
-			this->button2->UseVisualStyleBackColor = true;
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(293, 254);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 6;
-			this->button1->Text = L"button1";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MainForm::button1_Click);
 			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(528, 427);
+			this->ClientSize = System::Drawing::Size(749, 427);
 			this->Controls->Add(this->panel1);
 			this->Name = L"MainForm";
 			this->Text = L"MainForm";
@@ -199,31 +177,6 @@ namespace MyRestaurantProject {
 	private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	public: User^ user = nullptr;
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-
-		String^ connString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=myrestaurant;Integrated Security=True";
-		SqlConnection sqlConn(connString);
-		sqlConn.Open();
-
-		String^ sqlQuery = "INSERT INTO users " +
-			"(name, email, phone, address, password, balance) VALUES " +
-			"(@name, @email, @phone, @address, @password, @balance );";
-
-
-
-		SqlCommand command(sqlQuery, % sqlConn);
-		command.Parameters->AddWithValue("@name", "John Cena");
-		command.Parameters->AddWithValue("@email", "John Cena.com");
-		command.Parameters->AddWithValue("@phone", "phone");
-		command.Parameters->AddWithValue("@address", "address");
-		command.Parameters->AddWithValue("@password", "password");
-		command.Parameters->AddWithValue("@balance", "balance");
-
-
-		command.ExecuteNonQuery();
-		user = gcnew User;
-		
-	}
 };
 }

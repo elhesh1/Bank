@@ -45,8 +45,5 @@ void main(array<String^>^ args)
 		MyRestaurantProject::MainForm mainForm(user);
 		Application::Run(% mainForm);
 	}
-	else {
-		MessageBox::Show("Authentication Canceled",
-			"Program.cpp", MessageBoxButtons::OK);
-	}
+	
 }
