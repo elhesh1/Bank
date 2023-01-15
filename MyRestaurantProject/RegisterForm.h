@@ -94,11 +94,13 @@ namespace MyRestaurantProject {
 			// 
 			// label1
 			// 
+			this->label1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(12, 26);
+			this->label1->Location = System::Drawing::Point(101, 6);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(669, 63);
+			this->label1->Size = System::Drawing::Size(452, 80);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Register";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -106,106 +108,118 @@ namespace MyRestaurantProject {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(23, 125);
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->label2->Location = System::Drawing::Point(21, 92);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(103, 37);
+			this->label2->Size = System::Drawing::Size(64, 25);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Name";
 			// 
 			// tbName
 			// 
-			this->tbName->Location = System::Drawing::Point(255, 125);
+			this->tbName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->tbName->Location = System::Drawing::Point(168, 89);
 			this->tbName->Name = L"tbName";
-			this->tbName->Size = System::Drawing::Size(385, 44);
+			this->tbName->Size = System::Drawing::Size(385, 30);
 			this->tbName->TabIndex = 2;
 			// 
 			// tbEmail
 			// 
-			this->tbEmail->Location = System::Drawing::Point(270, 175);
+			this->tbEmail->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->tbEmail->Location = System::Drawing::Point(168, 115);
 			this->tbEmail->Name = L"tbEmail";
-			this->tbEmail->Size = System::Drawing::Size(385, 44);
+			this->tbEmail->Size = System::Drawing::Size(385, 30);
 			this->tbEmail->TabIndex = 4;
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(38, 162);
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->label3->Location = System::Drawing::Point(21, 117);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(97, 37);
+			this->label3->Size = System::Drawing::Size(60, 25);
 			this->label3->TabIndex = 3;
 			this->label3->Text = L"Email";
 			// 
 			// tbConfirmPassword
 			// 
-			this->tbConfirmPassword->Location = System::Drawing::Point(270, 381);
+			this->tbConfirmPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->tbConfirmPassword->Location = System::Drawing::Point(168, 217);
 			this->tbConfirmPassword->Name = L"tbConfirmPassword";
 			this->tbConfirmPassword->PasswordChar = '*';
-			this->tbConfirmPassword->Size = System::Drawing::Size(385, 44);
+			this->tbConfirmPassword->Size = System::Drawing::Size(385, 30);
 			this->tbConfirmPassword->TabIndex = 6;
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(-6, 384);
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->label4->Location = System::Drawing::Point(21, 222);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(280, 37);
+			this->label4->Size = System::Drawing::Size(171, 25);
 			this->label4->TabIndex = 5;
 			this->label4->Text = L"Confirm Password";
 			// 
 			// tbPhone
 			// 
-			this->tbPhone->Location = System::Drawing::Point(270, 225);
+			this->tbPhone->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->tbPhone->Location = System::Drawing::Point(168, 141);
 			this->tbPhone->Name = L"tbPhone";
-			this->tbPhone->Size = System::Drawing::Size(385, 44);
+			this->tbPhone->Size = System::Drawing::Size(385, 30);
 			this->tbPhone->TabIndex = 8;
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(38, 212);
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->label5->Location = System::Drawing::Point(21, 142);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(109, 37);
+			this->label5->Size = System::Drawing::Size(69, 25);
 			this->label5->TabIndex = 7;
 			this->label5->Text = L"Phone";
 			// 
 			// tbAddress
 			// 
-			this->tbAddress->Location = System::Drawing::Point(270, 275);
+			this->tbAddress->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->tbAddress->Location = System::Drawing::Point(168, 166);
 			this->tbAddress->Name = L"tbAddress";
-			this->tbAddress->Size = System::Drawing::Size(385, 44);
+			this->tbAddress->Size = System::Drawing::Size(385, 30);
 			this->tbAddress->TabIndex = 10;
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(38, 262);
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->label6->Location = System::Drawing::Point(21, 168);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(135, 37);
+			this->label6->Size = System::Drawing::Size(85, 25);
 			this->label6->TabIndex = 9;
 			this->label6->Text = L"Address";
 			// 
 			// tbPassword
 			// 
-			this->tbPassword->Location = System::Drawing::Point(270, 331);
+			this->tbPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->tbPassword->Location = System::Drawing::Point(168, 191);
 			this->tbPassword->Name = L"tbPassword";
 			this->tbPassword->PasswordChar = '*';
-			this->tbPassword->Size = System::Drawing::Size(385, 44);
+			this->tbPassword->Size = System::Drawing::Size(385, 30);
 			this->tbPassword->TabIndex = 12;
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(38, 318);
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->label7->Location = System::Drawing::Point(21, 195);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(158, 37);
+			this->label7->Size = System::Drawing::Size(98, 25);
 			this->label7->TabIndex = 11;
 			this->label7->Text = L"Password";
 			// 
 			// btnOK
 			// 
-			this->btnOK->Location = System::Drawing::Point(270, 472);
+			this->btnOK->Location = System::Drawing::Point(168, 256);
 			this->btnOK->Name = L"btnOK";
-			this->btnOK->Size = System::Drawing::Size(141, 98);
+			this->btnOK->Size = System::Drawing::Size(178, 44);
 			this->btnOK->TabIndex = 13;
 			this->btnOK->Text = L"OK";
 			this->btnOK->UseVisualStyleBackColor = true;
@@ -213,9 +227,9 @@ namespace MyRestaurantProject {
 			// 
 			// btnCancel
 			// 
-			this->btnCancel->Location = System::Drawing::Point(463, 467);
+			this->btnCancel->Location = System::Drawing::Point(375, 256);
 			this->btnCancel->Name = L"btnCancel";
-			this->btnCancel->Size = System::Drawing::Size(192, 108);
+			this->btnCancel->Size = System::Drawing::Size(178, 44);
 			this->btnCancel->TabIndex = 14;
 			this->btnCancel->Text = L"Cancel";
 			this->btnCancel->UseVisualStyleBackColor = true;
@@ -224,7 +238,7 @@ namespace MyRestaurantProject {
 			// llLogin
 			// 
 			this->llLogin->AutoSize = true;
-			this->llLogin->Location = System::Drawing::Point(45, 509);
+			this->llLogin->Location = System::Drawing::Point(66, 260);
 			this->llLogin->Name = L"llLogin";
 			this->llLogin->Size = System::Drawing::Size(96, 37);
 			this->llLogin->TabIndex = 15;
@@ -236,7 +250,8 @@ namespace MyRestaurantProject {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(19, 37);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(725, 587);
+			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->ClientSize = System::Drawing::Size(601, 315);
 			this->Controls->Add(this->llLogin);
 			this->Controls->Add(this->btnCancel);
 			this->Controls->Add(this->btnOK);

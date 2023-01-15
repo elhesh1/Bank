@@ -1,4 +1,8 @@
 #pragma once
+#include <set>
+#include <string.h>
+#include <iostream>
+#include <iostream>
 
 namespace MyRestaurantProject {
 
@@ -8,6 +12,7 @@ namespace MyRestaurantProject {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::SqlClient;
 
 	/// <summary>
 	/// Summary for Admin
@@ -46,7 +51,8 @@ namespace MyRestaurantProject {
 	private: System::Windows::Forms::TextBox^ tbUserIDBalance;
 	private: System::Windows::Forms::TextBox^ tbNewBalance;
 	private: System::Windows::Forms::TextBox^ tbDeleteUser;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ Button_Edit;
+
 	private: System::Windows::Forms::Button^ button2;
 
 	private:
@@ -73,7 +79,7 @@ namespace MyRestaurantProject {
 			this->tbUserIDBalance = (gcnew System::Windows::Forms::TextBox());
 			this->tbNewBalance = (gcnew System::Windows::Forms::TextBox());
 			this->tbDeleteUser = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->Button_Edit = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
@@ -187,16 +193,17 @@ namespace MyRestaurantProject {
 			this->tbDeleteUser->Size = System::Drawing::Size(100, 44);
 			this->tbDeleteUser->TabIndex = 11;
 			// 
-			// button1
+			// Button_Edit
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->Button_Edit->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(317, 214);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(144, 45);
-			this->button1->TabIndex = 12;
-			this->button1->Text = L"Confirm";
-			this->button1->UseVisualStyleBackColor = true;
+			this->Button_Edit->Location = System::Drawing::Point(317, 214);
+			this->Button_Edit->Name = L"Button_Edit";
+			this->Button_Edit->Size = System::Drawing::Size(144, 45);
+			this->Button_Edit->TabIndex = 12;
+			this->Button_Edit->Text = L"Confirm";
+			this->Button_Edit->UseVisualStyleBackColor = true;
+			this->Button_Edit->Click += gcnew System::EventHandler(this, &Admin::Button_Edit_Click);
 			// 
 			// button2
 			// 
@@ -215,7 +222,7 @@ namespace MyRestaurantProject {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(802, 421);
 			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->Button_Edit);
 			this->Controls->Add(this->tbDeleteUser);
 			this->Controls->Add(this->tbNewBalance);
 			this->Controls->Add(this->tbUserIDBalance);
@@ -239,6 +246,23 @@ namespace MyRestaurantProject {
 	private: System::Void Admin_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void Button_Edit_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ currentUserID = tbUserIDBalance->Text;
+		String^ newBalance = tbNewBalance->Text;
+	
+		String^ connString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=myrestaurant;Integrated Security=True";
+		SqlConnection sqlConn(connString);
+		sqlConn.Open();
+
+		String^ sqlQuery = "UPDATE users SET balance=@newBalance WHERE id=@ID";
+		SqlCommand command(sqlQuery, % sqlConn);
+		command.Parameters->AddWithValue("@ID", currentUserID);
+		command.Parameters->AddWithValue("@newBalance", newBalance);
+
+		command.ExecuteNonQuery();
+
+		 
 	}
 };
 }
