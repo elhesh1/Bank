@@ -8,7 +8,7 @@ Log In form:
 
 <img width="429" alt="Screenshot_20230115_030925" src="https://user-images.githubusercontent.com/95258969/212609572-71a3a7ae-ab6f-4192-928b-1b72b540e689.png">
 
-An error can occur:
+An error can occur if login information is incorrect:
 
 <img width="455" alt="Screenshot_20230115_031011" src="https://user-images.githubusercontent.com/95258969/212609621-5abf04b6-525a-4b3e-91ef-4cfcd4c81c86.png">
 
